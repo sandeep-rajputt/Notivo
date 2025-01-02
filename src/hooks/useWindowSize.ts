@@ -1,13 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 
-// Extend the Window interface to include resizeTimeout for debouncing
-declare global {
-  interface Window {
-    resizeTimeout: ReturnType<typeof setTimeout> | undefined;
-  }
-}
-
 interface WindowSize {
   width: number;
   height: number;
@@ -31,13 +24,10 @@ export default function useWindowSize() {
 
     // Handle resize with debounce
     const handleResize = () => {
-      if (window.resizeTimeout) clearTimeout(window.resizeTimeout);
-      window.resizeTimeout = setTimeout(() => {
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      }, 200); // 200ms debounce
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
 
     window.addEventListener("resize", handleResize);
@@ -48,7 +38,6 @@ export default function useWindowSize() {
     // Cleanup: remove event listener and timeout
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (window.resizeTimeout) clearTimeout(window.resizeTimeout);
     };
   }, []); // Empty array to run once on mount
 
