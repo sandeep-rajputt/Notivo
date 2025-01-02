@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@store/ReduxProvider";
 import Header from "@components/layout/header/Header";
+import Container from "@components/ui/Container";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -26,11 +27,13 @@ export default function RootLayout({
         <link rel="icon" href="/logo.svg" />
       </head>
       <body
-        className={`${plusJakartaSans.variable} antialiased font-[family-name:var(--font-plus-jakarta-sans)]`}
+        className={`${plusJakartaSans.variable} antialiased font-[family-name:var(--font-plus-jakarta-sans)] overflow-x-hidden`}
       >
         <ReduxProvider>
           <Header />
-          {children}
+          <div className="pt-20 ">
+            <Container>{children}</Container>
+          </div>
         </ReduxProvider>
       </body>
     </html>

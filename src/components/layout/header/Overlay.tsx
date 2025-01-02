@@ -100,6 +100,15 @@ const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
             </li>
             <li className="text-center">
               <Link
+                href="/pricing"
+                onClick={closeOverlay}
+                className="px-4 py-2"
+              >
+                Pricing
+              </Link>
+            </li>
+            <li className="text-center">
+              <Link
                 href="/contact-us"
                 onClick={closeOverlay}
                 className="px-4 py-2"
