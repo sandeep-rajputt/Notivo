@@ -42,7 +42,7 @@ export default function Features() {
       heading="Features"
       disc="Notivo offers a range of features designed to simplify your life and help you stay organized."
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-10">
         {cardData.map((card, index) => (
           <FeaturesCard key={index} {...card} />
         ))}
