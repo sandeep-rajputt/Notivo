@@ -1,6 +1,7 @@
 import SectionsTemplate from "./SectionsTemplate";
 import FeaturesCard from "@components/ui/FeaturesCard";
 import { FaClock, FaRedo, FaEnvelope, FaTelegram } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa";
 
 type CardData = {
   heading: string;
@@ -10,6 +11,12 @@ type CardData = {
 };
 
 const cardData: CardData[] = [
+  {
+    heading: "Discord Reminders",
+    disc: "Receive reminders in your Discord server, keeping you updated on important tasks and events.",
+    color: "blue",
+    icon: <FaDiscord className="text-white text-3xl" />,
+  },
   {
     heading: "Email Reminders",
     disc: "Get reminders sent straight to your inbox, ensuring you never miss an important update.",
