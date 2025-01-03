@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
                   draggable="false"
                   className="w-6 select-none"
                 />
-                <span className="text-lg font-bold text-primary-dark">
+                <span className="2xl:text-base base:text-sm text-xs font-bold text-primary-dark">
                   Effortless Notifications, Always On Time
                 </span>
               </motion.p>
@@ -60,9 +60,11 @@ const Hero: React.FC = () => {
                 variants={itemVariants}
                 className=" font-bold xl:text-start text-center mt-4 mb-8"
               >
-                <span className="text-primary text-5xl">Notivo</span>
+                <span className="text-primary 2xl:text-6xl text-5xl">
+                  Notivo
+                </span>
                 <br />
-                <span className="mt-2 text-4xl inline-block text-primary-dark">
+                <span className="mt-2 2xl:text-5xl base:text-4xl text-3xl inline-block text-primary-dark">
                   Simplify Your Life.
                 </span>
               </motion.h1>
