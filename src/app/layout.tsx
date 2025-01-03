@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en overflow-x-hidden">
       <head>
         <link rel="icon" href="/logo.svg" />
       </head>

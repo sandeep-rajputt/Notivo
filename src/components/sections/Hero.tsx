@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
               className="absolute xl:-top-[50%] xl:-left-[30%] left-1/4 xl:w-[100%] w-[80%] -top-1/4 z-0 select-none"
             />
 
-            <div className="relative z-10 flex flex-col gap-3">
+            <div className="relative z-10 flex flex-col 2xl:gap-1 gap-3">
               <motion.p
                 variants={itemVariants}
                 className="flex items-center xl:justify-start justify-center gap-2"
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
                   draggable="false"
                   className="w-6 select-none"
                 />
-                <span className="2xl:text-base base:text-sm text-xs font-bold text-primary-dark">
+                <span className="2xl:text-base text-sm font-bold text-primary-dark">
                   Effortless Notifications, Always On Time
                 </span>
               </motion.p>
@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
               </motion.h1>
               <motion.p
                 variants={itemVariants}
-                className="text-purple-text font-normal md:w-[70%] md:max-w-full max-w-xl xl:text-start text-center mx-auto xl:mx-0"
+                className="text-primary-word font-normal md:w-[70%] md:max-w-full max-w-xl xl:text-start text-center mx-auto xl:mx-0"
               >
                 The simplest way to never miss important tasks, keep your
                 schedule organized, and receive timely reminders for everything

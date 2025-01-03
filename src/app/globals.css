@@ -32,6 +32,6 @@ body {
   animation: shine 5s infinite linear;
 }
 
-.small-scrollbar::-webkit-scrollbar-track {
-  width: 10px;
+.small-scrollbar::-webkit-scrollbar {
+  width: 0px;
 }

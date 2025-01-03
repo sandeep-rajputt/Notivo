@@ -81,11 +81,15 @@ const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
       exit="exit"
       variants={overlayVariants}
     >
-      <div className="flex flex-col items-center gap-10 text-purple-text">
+      <div className="flex flex-col items-center gap-10 ">
         <nav>
-          <ul className="flex flex-col gap-10 mt-10">
+          <ul className="flex flex-col gap-10 mt-10 text-primary-word">
             <li className="text-center">
-              <Link href="/" onClick={closeOverlay} className="px-4 py-2">
+              <Link
+                href="/"
+                onClick={closeOverlay}
+                className="px-4 py-2 hover:text-primary"
+              >
                 Home
               </Link>
             </li>
@@ -93,7 +97,7 @@ const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
               <Link
                 href="/about-us"
                 onClick={closeOverlay}
-                className="px-4 py-2"
+                className="px-4 py-2 hover:text-primary"
               >
                 About Us
               </Link>
@@ -102,7 +106,7 @@ const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
               <Link
                 href="/pricing"
                 onClick={closeOverlay}
-                className="px-4 py-2"
+                className="px-4 py-2 hover:text-primary"
               >
                 Pricing
               </Link>
@@ -111,7 +115,7 @@ const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
               <Link
                 href="/contact-us"
                 onClick={closeOverlay}
-                className="px-4 py-2"
+                className="px-4 py-2 hover:text-primary"
               >
                 Contact Us
               </Link>

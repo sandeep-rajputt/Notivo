@@ -7,7 +7,7 @@ const BigScreen: React.FC = () => {
   return (
     <div className="flex items-center gap-6 text-purple-text">
       <nav>
-        <ul className="flex gap-6">
+        <ul className="flex gap-6 text-primary-word">
           <li>
             <Link
               href="/"
