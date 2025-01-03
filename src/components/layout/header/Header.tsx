@@ -23,12 +23,18 @@ const Header: React.FC = () => {
 
       if (window.location.pathname === "/") {
         window.addEventListener("scroll", handleScroll);
+        if (window.scrollY > 20) {
+          console.log("scroll");
+          setScrolling(true);
+        }
         return () => {
           window.removeEventListener("scroll", handleScroll);
         };
       }
     }
   }, [location]);
+
+  if (width === 0) return null;
 
   return (
     <header
