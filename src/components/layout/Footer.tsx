@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary-light lg:mt-0 mt-20">
+    <footer className="bg-primary-light lg:mt-10 mt-20">
       {/* Support Banner */}
       <div className="relative w-full">
         <div className="mx-auto max-w-7xl">

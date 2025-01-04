@@ -1,3 +1,6 @@
+import React from "react";
+import { motion } from "framer-motion";
+
 type Props = {
   children: React.ReactNode;
   heading: string;
@@ -6,7 +9,13 @@ type Props = {
 
 export default function SectionsTemplate({ children, heading, disc }: Props) {
   return (
-    <section className="py-24 flex flex-col gap-16">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      viewport={{ once: true }}
+      className="py-24 flex flex-col gap-16"
+    >
       <div className="flex flex-col items-center">
         <h2 className="text-center md:text-5xl text-4xl font-bold mb-4 text-primary-dark">
           {heading}
@@ -16,6 +25,6 @@ export default function SectionsTemplate({ children, heading, disc }: Props) {
         </p>
       </div>
       <div>{children}</div>
-    </section>
+    </motion.section>
   );
 }

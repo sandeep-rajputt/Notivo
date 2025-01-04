@@ -17,7 +17,11 @@ export default function FAQ({ faqData }: Props) {
     >
       <div className="space-y-4">
         {faqData.map((item, index) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
             key={index}
             className="bg-white rounded-lg shadow-sm overflow-hidden"
           >
@@ -55,7 +59,7 @@ export default function FAQ({ faqData }: Props) {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         ))}
       </div>
     </SectionsTemplate>

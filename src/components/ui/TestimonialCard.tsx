@@ -1,6 +1,7 @@
 import React from "react";
 import RatingStars from "@components/ui/RatingStars";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 type Props = {
   name: string;
@@ -11,7 +12,13 @@ type Props = {
 
 const TestimonialCard = ({ name, feedback, rating, image }: Props) => {
   return (
-    <div className="p-8 h-full rounded-lg bg-white grid grid-rows-[1fr_auto] max-w-[365px]">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      viewport={{ once: true }}
+      className="p-8 h-full rounded-lg bg-white grid grid-rows-[1fr_auto] max-w-[365px]"
+    >
       <p className="leading-loose text-primary-word text-base font-light ">
         {feedback}
       </p>
@@ -28,7 +35,7 @@ const TestimonialCard = ({ name, feedback, rating, image }: Props) => {
           <RatingStars rating={rating} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

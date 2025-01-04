@@ -4,6 +4,7 @@ import OrangeButton from "@components/ui/OrangeButton";
 import { MdOutlineDone } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 type Props = {
   planName: string;
@@ -23,7 +24,11 @@ const PricingCard = ({
   highlight,
 }: Props) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      viewport={{ once: true }}
       className={`w-full h-full grid grid-rows-[auto_auto_auto_1fr_auto] py-12 base:px-12 px-8 gap-7 base:max-w-96 rounded-xl ${
         planName === "Standard Plan" ? "bg-primary text-white" : "bg-white"
       }`}
@@ -116,7 +121,7 @@ const PricingCard = ({
           <OrangeButton className="text-lg">Buy Now</OrangeButton>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 type ColorMap = {
   [key: string]: {
@@ -48,7 +49,13 @@ type SelectedColor = {
 const Card = ({ heading, disc, icon, color }: Props): ReactNode => {
   const selectedColor: SelectedColor = colorMap[color] || colorMap.green;
   return (
-    <div className="max-w-[365px] p-12 bg-white rounded-xl grid grid-rows-[auto_auto_1fr] h-full gap-5 justify-self-center">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      viewport={{ once: true }}
+      className="max-w-[365px] p-12 bg-white rounded-xl grid grid-rows-[auto_auto_1fr] h-full gap-5 justify-self-center"
+    >
       <div className="flex justify-center items-center py-4">
         <div
           className={`p-4 bg-gradient-to-r ${selectedColor.from} ${selectedColor.to} rounded-full`}
@@ -61,7 +68,7 @@ const Card = ({ heading, disc, icon, color }: Props): ReactNode => {
         {heading}
       </h3>
       <p className="text-center text-base font-light leading-8">{disc}</p>
-    </div>
+    </motion.div>
   );
 };
 
