@@ -4,6 +4,7 @@ import "./globals.css";
 import ReduxProvider from "@store/ReduxProvider";
 import Header from "@components/layout/header/Header";
 import Container from "@components/ui/Container";
+import Footer from "@components/layout/Footer";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <div className="pt-20 ">
             <Container>{children}</Container>
           </div>
+          <Footer />
         </ReduxProvider>
       </body>
     </html>
