@@ -1,3 +1,4 @@
+"use client";
 import SectionsTemplate from "./SectionsTemplate";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsQuestionCircleFill } from "react-icons/bs";

@@ -13,38 +13,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary-light lg:mt-10 mt-20">
-      {/* Support Banner */}
-      <div className="relative w-full">
-        <div className="mx-auto max-w-7xl">
-          <div className="rounded-xl bg-primary p-8 xl:w-[80%] w-[90%] mx-auto -translate-y-1/2">
-            <div className="flex lg:flex-row flex-col  items-center justify-between gap-4 md:flex-row">
-              <div className="space-y-2">
-                <h2 className="text-xl font-bold text-white lg:text-start text-center md:text-2xl">
-                  Need support ? contact our team
-                </h2>
-                <p className="text-white/90 lg:text-start text-center">
-                  Mon - Fri: 9 am to 5 pm
-                </p>
-              </div>
-              <div className="flex lg:flex-row flex-col items-center gap-4">
-                <Link
-                  href="mailto:support@notivo.in"
-                  className="rounded-full bg-tertiary px-6 py-2.5 font-medium text-white transition-colors hover:bg-tertiary-light"
-                >
-                  support@notivo.in
-                </Link>
-                <Link href="/faqs" className="text-sm text-white underline">
-                  Read The FAQ
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer */}
-      <div className="p-6 max-w-7xl mx-auto pb-12 -mt-20 lg:mt-0">
+    <footer className="bg-primary-light lg:mt-10 mt-20 pt-10">
+      <div className="p-6 max-w-7xl mx-auto pb-12  lg:mt-0">
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {/* Brand Section */}
           <div className="space-y-6">
