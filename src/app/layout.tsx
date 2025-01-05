@@ -31,11 +31,13 @@ export default function RootLayout({
         className={`${plusJakartaSans.variable} antialiased font-[family-name:var(--font-plus-jakarta-sans)] overflow-x-hidden`}
       >
         <ReduxProvider>
-          <Header />
-          <div className="pt-20 ">
-            <Container>{children}</Container>
+          <div className="grid grid-rows-[1fr_auto] min-h-screen ">
+            <Header />
+            <div className="pt-20 ">
+              <Container>{children}</Container>
+            </div>
+            <Footer />
           </div>
-          <Footer />
         </ReduxProvider>
       </body>
     </html>
