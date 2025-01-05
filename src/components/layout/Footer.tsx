@@ -104,7 +104,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-6 text-center">
           <p className="text-sm text-white/80">
-            © Copyrights 2024 Notivo. All rights reserved.
+            © Copyrights 2025 Notivo. All rights reserved.
           </p>
         </div>
       </div>
