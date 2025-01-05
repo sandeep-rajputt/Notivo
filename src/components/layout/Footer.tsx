@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary-light lg:mt-10 mt-20 pt-10">
-      <div className="p-6 max-w-7xl mx-auto pb-12  lg:mt-0">
+      <div className="p-6 max-w-7xl mx-auto   lg:mt-0">
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {/* Brand Section */}
           <div className="space-y-6">
@@ -23,7 +23,7 @@ export default function Footer() {
             </Link>
             <p className="text-sm text-white/80">
               Notivo helps you stay on top of important tasks and events with
-              reminders sent through WhatsApp, Telegram, email, and more!
+              reminders sent through Discord, Telegram, email, and more!
             </p>
             <form onSubmit={handleSubmit} className="flex gap-2">
               <input
