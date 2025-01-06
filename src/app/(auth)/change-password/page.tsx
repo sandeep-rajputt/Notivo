@@ -1,35 +1,22 @@
 "use client";
-import { Suspense } from "react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import CustomBox from "@components/ui/Custom-box";
 import PasswordInput from "@components/ui/Password-input";
 import Skeleton from "@components/ui/Skeleton";
+import { VscLoading } from "react-icons/vsc";
 
 export default function Page() {
-  return (
-    <Suspense
-      fallback={
-        <CustomBox className="flex items-center justify-center py-12">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-        </CustomBox>
-      }
-    >
-      <PasswordReset />
-    </Suspense>
-  );
-}
-
-function PasswordReset() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
   const [step, setStep] = useState<
-    "validating" | "invalid" | "form" | "loading" | "success"
+    "validating" | "invalid" | "form" | "success"
   >("validating");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -38,7 +25,6 @@ function PasswordReset() {
       router.push("/forgot-password");
       return;
     }
-
     // Simulate token validation
     const validateToken = setTimeout(() => {
       // For demo purposes, consider token "expired" if it contains the word "expired"
@@ -66,11 +52,12 @@ function PasswordReset() {
       return;
     }
 
-    setStep("loading");
+    setLoading(true);
 
     // Simulate API call
     setTimeout(() => {
       setStep("success");
+      setLoading(false);
     }, 2000);
   };
 
@@ -135,23 +122,20 @@ function PasswordReset() {
                   onChange={setConfirmPassword}
                   error={error && error.includes("match") ? error : undefined}
                 />
-
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   className="w-full rounded-full bg-primary py-3 text-white hover:bg-primary-light"
                 >
-                  Change Password
+                  {loading ? (
+                    <VscLoading className="animate-spin h-6 w-6 text-white mx-auto" />
+                  ) : (
+                    "Changing Password"
+                  )}
                 </motion.button>
               </form>
             </div>
-          </CustomBox>
-        )}
-
-        {step === "loading" && (
-          <CustomBox className="flex items-center justify-center py-12">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
           </CustomBox>
         )}
 
