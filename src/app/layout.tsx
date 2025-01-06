@@ -5,6 +5,7 @@ import ReduxProvider from "@store/ReduxProvider";
 import Header from "@components/layout/header/Header";
 import Container from "@components/ui/Container";
 import Footer from "@components/layout/Footer";
+import NextTopLoader from "nextjs-toploader";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -30,6 +31,11 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} antialiased font-[family-name:var(--font-plus-jakarta-sans)] overflow-x-hidden`}
       >
+        <NextTopLoader
+          zIndex={99999999999}
+          color="#6a49f2"
+          showSpinner={false}
+        />
         <ReduxProvider>
           <div className="grid grid-rows-[1fr_auto] min-h-screen ">
             <Header />

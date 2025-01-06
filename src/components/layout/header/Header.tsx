@@ -8,42 +8,30 @@ import Image from "next/image";
 const Header: React.FC = () => {
   const { width }: { width: number } = useWindowSize();
   const [scrolling, setScrolling] = useState<boolean>(false);
-  const [location, setLocation] = useState<string>("");
 
   const handleScroll = () => {
-    if (location === "/") {
-      const isScrolling = window.scrollY > 20;
-      setScrolling(isScrolling);
-    }
+    const isScrolling = window.scrollY > 20;
+    setScrolling(isScrolling);
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setLocation(window.location.pathname);
+    window.addEventListener("scroll", handleScroll);
+    if (window.scrollY > 20) {
+      console.log("scroll");
+      setScrolling(true);
 
-      if (window.location.pathname === "/") {
-        window.addEventListener("scroll", handleScroll);
-        if (window.scrollY > 20) {
-          console.log("scroll");
-          setScrolling(true);
-        }
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
     }
-  }, [location]);
+  }, []);
 
   if (width === 0) return null;
 
   return (
     <header
-      className={`fixed flex flex-col w-full transition-all duration-200 ease-out top-0 z-[99999999] ${
-        location === "/"
-          ? scrolling
-            ? "bg-background/70 backdrop-blur shadow"
-            : "pt-5"
-          : "bg-background/70 backdrop-blur shadow"
+      className={`fixed flex flex-col w-full transition-all duration-200 ease-out top-0 z-[999] ${
+        scrolling ? "bg-background/70 backdrop-blur shadow" : "pt-5"
       }`}
     >
       <div className="main-header flex justify-between w-full items-center p-6 max-w-7xl mx-auto">

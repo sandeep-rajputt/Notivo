@@ -47,7 +47,7 @@ export default function Page() {
           </motion.div>
         </div>
       </section>
-      <section className="py-12 mb-40 bg-white">
+      <section className="py-12 mb-40 bg-white shadow-md rounded-lg">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
