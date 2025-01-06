@@ -23,6 +23,10 @@ export default {
           DEFAULT: "#FF7438",
           light: "#FF8B59",
         },
+        skeleton: {
+          DEFAULT: "#fff",
+          secondary: "#ebe6fe",
+        },
       },
     },
     screens: {

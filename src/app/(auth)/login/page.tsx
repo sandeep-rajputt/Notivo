@@ -27,7 +27,13 @@ export default function Page() {
     <main className="lg:py-28 py-12 text-primary-word">
       <div className="flex bg-white rounded-2xl overflow-hidden shadow-md">
         <div className="flex w-full items-center justify-center px-6 py-12 lg:w-1/2 lg:px-8">
-          <div className="w-full max-w-md space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="w-full max-w-md space-y-8"
+          >
             <div className="space-y-2">
               <h1 className="text-4xl font-bold text-primary">Log in</h1>
               <p className="text-primary-word">
@@ -126,7 +132,16 @@ export default function Page() {
                 <span>Log in with Github</span>
               </motion.button>
             </div>
-          </div>
+            <div className="text-center text-sm">
+              Don&apos;t have an account?{" "}
+              <Link
+                href="/signup"
+                className="text-primary hover:text-primary-light"
+              >
+                Sign up
+              </Link>
+            </div>
+          </motion.div>
         </div>
 
         {/* Right Section */}

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import CustomBox from "@components/ui/Custom-box";
 import PasswordInput from "@components/ui/Password-input";
+import Skeleton from "@components/ui/Skeleton";
 
 export default function Page() {
   return (
@@ -77,11 +78,8 @@ function PasswordReset() {
     <div className="flex items-center justify-center py-28">
       <AnimatePresence mode="wait">
         {step === "validating" && (
-          <CustomBox className="flex items-center justify-center py-12">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-          </CustomBox>
+          <Skeleton className=" h-80 max-w-96 rounded-2xl" />
         )}
-
         {step === "invalid" && (
           <CustomBox>
             <div className="space-y-6 text-center">
