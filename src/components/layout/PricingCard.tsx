@@ -1,5 +1,4 @@
 import React from "react";
-import BlueButton from "@components/ui/BlueButton";
 import PrimaryArrowButton from "@components/ui/PrimaryArrowButton";
 import { MdOutlineDone } from "react-icons/md";
 import { IoClose } from "react-icons/io5";

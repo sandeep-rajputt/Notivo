@@ -14,8 +14,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  model,
 }: Readonly<{
   children: React.ReactNode;
+  model: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -30,6 +32,7 @@ export default function RootLayout({
         />
         <ReduxProvider>
           <div className="grid grid-rows-[1fr_auto] min-h-screen ">
+            {model}
             <Header />
             <div className="pt-20 ">
               <Container>{children}</Container>
