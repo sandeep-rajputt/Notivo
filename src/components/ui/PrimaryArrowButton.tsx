@@ -35,7 +35,11 @@ const PrimaryArrowButton: FC<PrimaryArrowButtonProps> = ({
     );
   }
   return (
-    <button onClick={handleClick} className={`${baseClass} ${className}`}>
+    <button
+      onClick={handleClick}
+      className={`${baseClass} ${className}`}
+      aria-label={`${children}`}
+    >
       {shineEffect}
       <span>{children}</span>
       <TiArrowRightThick className="transition-transform duration-300 transform group-hover:rotate-0 -rotate-45" />

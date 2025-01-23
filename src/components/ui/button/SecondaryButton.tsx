@@ -33,6 +33,7 @@ export default function SecondaryButton({
       type={type}
       onClick={onClick}
       disabled={isDisabled}
+      aria-label={`${children}`}
     >
       {loading ? (
         <VscLoading className="animate-spin h-6 w-6 text-primary mx-auto" />

@@ -23,6 +23,7 @@ export default function PrimaryButtton({
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
+      aria-label={`${children}`}
       className={`w-full rounded-full bg-primary py-3 text-white hover:bg-primary-light ${className} ${
         loading
           ? "cursor-wait"

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { RootState } from "@store/index";
 import { useSelector } from "react-redux";
+import SecondaryArrowButton from "@components/ui/SecondaryArrowButton";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -81,11 +82,17 @@ const Hero: React.FC = () => {
               </motion.p>
               <motion.div
                 variants={itemVariants}
-                className="flex xl:justify-start justify-center"
+                className="flex base:flex-row flex-col items-center xl:justify-start justify-center my-4 gap-5"
               >
+                <SecondaryArrowButton
+                  href="https://github.com/sandeep-rajputt/notivo"
+                  className="h-fit"
+                >
+                  Github ⭐
+                </SecondaryArrowButton>
                 <PrimaryArrowButton
                   shine={true}
-                  className="mt-8"
+                  className="py-2.5"
                   href={data ? "/dashboard" : "/signup"}
                 >
                   {data ? "Dashboard" : "Get Started"}

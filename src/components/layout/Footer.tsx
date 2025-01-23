@@ -15,7 +15,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-primary-light lg:mt-10 mt-20 pt-10">
+    <footer className="bg-primary-light pt-10">
       <div className="p-6 max-w-7xl mx-auto   lg:mt-0">
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {/* Brand Section */}
@@ -60,13 +60,18 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">Useful Links</h3>
             <ul className="space-y-3">
-              {["Home", "About us", "Pricing", "Contact Us"].map((item) => (
-                <li key={item}>
+              {[
+                { name: "Home", link: "/" },
+                { name: "About us", link: "about-us" },
+                { name: "Pricing", link: "pricing" },
+                { name: "Contact Us", link: "contact-us" },
+              ].map((item) => (
+                <li key={item.name}>
                   <Link
-                    href={`/${item.toLowerCase().replace(" ", "-")}`}
+                    href={item.link}
                     className="text-white/90 hover:text-white"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

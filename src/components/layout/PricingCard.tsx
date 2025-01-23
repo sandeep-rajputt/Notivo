@@ -5,6 +5,7 @@ import { MdOutlineDone } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import SecondaryArrowButton from "@components/ui/SecondaryArrowButton";
 
 type Props = {
   planName: string;
@@ -116,9 +117,13 @@ const PricingCard = ({
       </div>
       <div className="flex items-center justify-center mt-10">
         {planName !== "Standard Plan" ? (
-          <BlueButton className="text-lg">Buy Now</BlueButton>
+          <SecondaryArrowButton className="text-lg" href="/pricing">
+            Buy Now
+          </SecondaryArrowButton>
         ) : (
-          <PrimaryArrowButton className="text-lg">Buy Now</PrimaryArrowButton>
+          <PrimaryArrowButton className="text-lg" href="/pricing">
+            Buy Now
+          </PrimaryArrowButton>
         )}
       </div>
     </motion.div>

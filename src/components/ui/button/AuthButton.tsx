@@ -25,6 +25,7 @@ export default function AuthButton({
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
       disabled={isDisabled}
+      aria-label={"Auth Button"}
       className={`flex w-full items-center justify-center gap-3 rounded-full border border-gray-200 py-3 hover:bg-gray-50 ${
         loading
           ? "cursor-wait"
@@ -37,7 +38,7 @@ export default function AuthButton({
         <VscLoading className="animate-spin h-6 w-6 text-primary mx-auto" />
       ) : (
         <>
-          <Image src={img} alt="Google Logo" width={20} height={20} />
+          <Image src={img} alt="Auth Logo" width={20} height={20} />
           <span>{children}</span>
         </>
       )}
