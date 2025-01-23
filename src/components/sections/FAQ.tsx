@@ -1,5 +1,5 @@
 "use client";
-import SectionsTemplate from "./SectionsTemplate";
+import SectionsTemplate from "@components/sections/SectionsTemplate";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsQuestionCircleFill } from "react-icons/bs";
 import { useState } from "react";

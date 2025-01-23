@@ -3,14 +3,17 @@ import { useState, useRef, useEffect, FC } from "react";
 import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import OrangeButton from "@components/ui/OrangeButton";
+import PrimaryArrowButton from "@components/ui/PrimaryArrowButton";
 import useScrollbarWidth from "@hooks/useScrollbarWidth";
+import { RootState } from "@store/index";
+import { useSelector } from "react-redux";
 
 interface OverlayProps {
   closeOverlay: () => void;
 }
 
 const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
+  const { data } = useSelector((state: RootState) => state.userData);
   const [overlayRoot, setOverlayRoot] = useState<HTMLElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const scrollbarWidth = useScrollbarWidth();
@@ -123,7 +126,12 @@ const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
           </ul>
         </nav>
         <div className="rounded-full" onClick={closeOverlay}>
-          <OrangeButton shine={true}>TRY IT FREE</OrangeButton>
+          <PrimaryArrowButton
+            shine={true}
+            href={data ? "/dashboard" : "/signup"}
+          >
+            {data ? "Dashboard" : "TRY IT FREE"}
+          </PrimaryArrowButton>
         </div>
       </div>
     </motion.div>,

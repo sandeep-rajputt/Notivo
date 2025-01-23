@@ -2,26 +2,118 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FiUser, FiLock } from "react-icons/fi";
+import { z } from "zod";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import logInSchema from "@schemas/logInSchema";
+import PrimaryIconInput from "@components/ui/input/PrimaryIconInput";
+import PassIconInput from "@components/ui/input/PassIconInput";
+import { FiUser } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { VscLoading } from "react-icons/vsc";
+import { useEffect, useState } from "react";
+import { signIn } from "next-auth/react";
+import { useSearchParams, useRouter } from "next/navigation";
+import FormError from "@components/ui/FormError";
+import AuthButton from "@components/ui/button/AuthButton";
+import PrimaryButtton from "@components/ui/button/PrimaryButtton";
+
+type LoginFormData = z.infer<typeof logInSchema>;
 
 export default function Page() {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [submitDisabled, setSubmitDisabled] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [googleLoading, setGoogleLoading] = useState<boolean>(false);
+  const [googleBtnDisabled, setGoogleBtnDisable] = useState<boolean>(true);
+  const [githubLoading, setGithubLoading] = useState<boolean>(false);
+  const [githubBtnDisabled, setGithubBtnDisable] = useState<boolean>(true);
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+  const router = useRouter();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<LoginFormData>({ resolver: zodResolver(logInSchema) });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: LoginFormData) => {
     setLoading(true);
-    setError("");
-    setTimeout(() => {
+    setSubmitDisabled(true);
+    const result = await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+      action: "login",
+    });
+    if (result?.error) {
+      setCustomError(result.error);
       setLoading(false);
-      setError("Invalid email or password");
-    }, 2000);
+      setSubmitDisabled(false);
+    } else {
+      setLoading(false);
+      setErrorMessage("");
+      router.push("/dashboard");
+    }
   };
+
+  async function googleSignIn() {
+    setErrorMessage("");
+    setGoogleLoading(true);
+    setGoogleBtnDisable(true);
+    setGithubBtnDisable(true);
+    setSubmitDisabled(true);
+    await signIn("google", {
+      redirect: false,
+      callbackUrl: "/signup",
+    });
+  }
+
+  async function githubSignIn() {
+    setErrorMessage("");
+    setGithubLoading(true);
+    setGoogleBtnDisable(true);
+    setGithubBtnDisable(true);
+    setSubmitDisabled(true);
+    await signIn("github", {
+      redirect: false,
+      callbackUrl: "/signup",
+    });
+  }
+
+  function setCustomError(error: string | null) {
+    switch (error) {
+      case "OAuthCallback":
+        setErrorMessage("You canceled the Google login.");
+        break;
+      case "AccessDenied":
+        setErrorMessage("Access was denied.");
+        break;
+      case "Configuration":
+        setErrorMessage(
+          "There is a configuration issue. Please contact support."
+        );
+        break;
+      case "Callback":
+        setErrorMessage("Login was canceled or failed. Please try again.");
+        break;
+      default:
+        setErrorMessage(
+          error || "An unknown error occurred. Please try again later"
+        );
+    }
+  }
+
+  useEffect(() => {
+    if (githubBtnDisabled) {
+      setGithubBtnDisable(false);
+    }
+    if (googleBtnDisabled) {
+      setGoogleBtnDisable(false);
+    }
+    if (error) {
+      setCustomError(error);
+    }
+  }, [error]);
 
   return (
     <main className="lg:py-28 py-12 text-primary-word">
@@ -40,50 +132,45 @@ export default function Page() {
                 Access your Notivo account to stay on top of your schedule.
               </p>
             </div>
-
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="relative">
-                <input
-                  type="email"
-                  value={email}
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email"
-                  className="w-full rounded-full border border-gray-200 px-6 py-3 pl-12 focus:border-primary focus:outline-none"
-                />
-                <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 transform text-primary-word" />
-              </div>
-
-              <div className="relative">
-                <input
-                  type="password"
-                  value={password}
-                  required
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Password"
-                  className="w-full rounded-full border border-gray-200 px-6 py-3 pl-12 focus:border-primary focus:outline-none"
-                />
-                <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 transform text-primary-word" />
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={loading}
-                type="submit"
-                className="w-full rounded-full bg-primary py-3 text-white hover:bg-primary-light"
-              >
-                {loading ? (
-                  <VscLoading className="animate-spin h-6 w-6 text-white mx-auto" />
-                ) : (
-                  "Log in"
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+              <Controller
+                name="email"
+                control={control}
+                render={({ field }) => (
+                  <PrimaryIconInput
+                    type={"text"}
+                    placeholder="Email"
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    error={errors.email?.message}
+                    icon={FiUser}
+                  />
                 )}
-              </motion.button>
-              {error && (
-                <span className="text-red-500 text-center block">{error}</span>
-              )}
-            </form>
+              />
+              <Controller
+                name="password"
+                control={control}
+                render={({ field }) => (
+                  <PassIconInput
+                    placeholder="Password"
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    error={errors.password?.message}
+                  />
+                )}
+              />
 
+              {errorMessage && <FormError>{errorMessage}</FormError>}
+              <PrimaryButtton
+                loading={loading}
+                type="submit"
+                isDisabled={submitDisabled}
+              >
+                Log in
+              </PrimaryButtton>
+            </form>
             <div className="text-center">
               <Link
                 href="/forgot-password"
@@ -92,7 +179,6 @@ export default function Page() {
                 Forgot your password?
               </Link>
             </div>
-
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-200"></div>
@@ -101,36 +187,23 @@ export default function Page() {
                 <span className="bg-white px-4 text-primary-word">or</span>
               </div>
             </div>
-
             <div className="space-y-4">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex w-full items-center justify-center gap-3 rounded-full border border-gray-200 py-3 hover:bg-gray-50"
+              <AuthButton
+                isDisabled={googleBtnDisabled}
+                loading={googleLoading}
+                onClick={() => googleSignIn()}
+                img="/google.svg"
               >
-                <Image
-                  src="/google.svg"
-                  alt="Google Logo"
-                  width={20}
-                  height={20}
-                />
-                <span>Log in with Google</span>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex w-full items-center justify-center gap-3 rounded-full border border-gray-200 py-3 hover:bg-gray-50"
+                Log in with Google
+              </AuthButton>
+              <AuthButton
+                isDisabled={githubBtnDisabled}
+                loading={githubLoading}
+                onClick={() => githubSignIn()}
+                img="/github.svg"
               >
-                <Image
-                  src="/github.svg"
-                  alt="Github Logo"
-                  width={20}
-                  height={20}
-                />
-
-                <span>Log in with Github</span>
-              </motion.button>
+                Log in with Github
+              </AuthButton>
             </div>
             <div className="text-center text-sm">
               Don&apos;t have an account?{" "}
@@ -148,7 +221,7 @@ export default function Page() {
         <div className="hidden w-1/2 bg-primary-background lg:block">
           <div className="relative flex h-full items-center justify-center">
             <Image
-              src="/Analytics Illustration.svg"
+              src="/Login Illustration.svg"
               alt="Analytics Illustration"
               width={600}
               height={600}

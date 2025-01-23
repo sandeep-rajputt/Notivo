@@ -1,6 +1,6 @@
 import React from "react";
 import BlueButton from "@components/ui/BlueButton";
-import OrangeButton from "@components/ui/OrangeButton";
+import PrimaryArrowButton from "@components/ui/PrimaryArrowButton";
 import { MdOutlineDone } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
@@ -118,7 +118,7 @@ const PricingCard = ({
         {planName !== "Standard Plan" ? (
           <BlueButton className="text-lg">Buy Now</BlueButton>
         ) : (
-          <OrangeButton className="text-lg">Buy Now</OrangeButton>
+          <PrimaryArrowButton className="text-lg">Buy Now</PrimaryArrowButton>
         )}
       </div>
     </motion.div>

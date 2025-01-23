@@ -1,7 +1,9 @@
 import React from "react";
-import OrangeButton from "@components/ui/OrangeButton";
+import PrimaryArrowButton from "@components/ui/PrimaryArrowButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { RootState } from "@store/index";
+import { useSelector } from "react-redux";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,6 +22,7 @@ const itemVariants = {
 };
 
 const Hero: React.FC = () => {
+  const { data } = useSelector((state: RootState) => state.userData);
   return (
     <section>
       <div className="w-full grid xl:grid-cols-[1fr_1fr] grid-cols-1 pt-20 pb-10 xl:gap-3 gap-32">
@@ -80,9 +83,13 @@ const Hero: React.FC = () => {
                 variants={itemVariants}
                 className="flex xl:justify-start justify-center"
               >
-                <OrangeButton shine={true} className="mt-8" href="/signup">
-                  Get Started
-                </OrangeButton>
+                <PrimaryArrowButton
+                  shine={true}
+                  className="mt-8"
+                  href={data ? "/dashboard" : "/signup"}
+                >
+                  {data ? "Dashboard" : "Get Started"}
+                </PrimaryArrowButton>
               </motion.div>
             </div>
           </div>

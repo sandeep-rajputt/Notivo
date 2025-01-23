@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@store/ReduxProvider";
 import Header from "@components/layout/header/Header";
 import Container from "@components/ui/Container";
 import Footer from "@components/layout/Footer";
 import NextTopLoader from "nextjs-toploader";
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Notivo - Stay On Top of Your Tasks with Smart Reminders",
@@ -24,13 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en overflow-x-hidden">
+    <html lang="en" className="overflow-x-hidden">
       <head>
         <link rel="icon" href="/logo.svg" />
       </head>
-      <body
-        className={`${plusJakartaSans.variable} antialiased font-[family-name:var(--font-plus-jakarta-sans)] overflow-x-hidden`}
-      >
+      <body className={`antialiased overflow-x-hidden`}>
         <NextTopLoader
           zIndex={99999999999}
           color="#6a49f2"

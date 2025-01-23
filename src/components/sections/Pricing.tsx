@@ -1,4 +1,4 @@
-import SectionsTemplate from "./SectionsTemplate";
+import SectionsTemplate from "@components/sections/SectionsTemplate";
 import PricingCard from "@components/layout/PricingCard";
 
 const PricingData = [

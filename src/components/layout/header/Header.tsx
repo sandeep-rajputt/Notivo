@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import useWindowSize from "@hooks/useWindowSize";
-import BigScreen from "./BigScreen";
-import SmallScreen from "./SmallScreen";
+import BigScreen from "@components/layout/header/BigScreen";
+import SmallScreen from "@components/layout/header/SmallScreen";
 import Image from "next/image";
 
 const Header: React.FC = () => {
@@ -17,7 +17,6 @@ const Header: React.FC = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     if (window.scrollY > 20) {
-      console.log("scroll");
       setScrolling(true);
 
       return () => {
@@ -44,7 +43,7 @@ const Header: React.FC = () => {
             draggable="false"
             className="select-none"
           />
-          <p className="text-3xl font-extrabold tracking-tighter bg-gradient-to-r from-primary-dark to-primary bg-clip-text text-transparent">
+          <p className="text-3xl font-extrabold  bg-gradient-to-r from-primary-dark to-primary bg-clip-text text-transparent">
             <span>
               <span className="pr-0.5">Notivo </span>
             </span>

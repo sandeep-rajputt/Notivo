@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HiOutlineMail } from "react-icons/hi";
+import Image from "next/image";
+import React from "react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -18,9 +20,19 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {/* Brand Section */}
           <div className="space-y-6">
-            <Link href="/" className="text-2xl font-bold text-white">
-              Notivo
-            </Link>
+            <div className="flex gap-2">
+              <Image
+                src="/whitelogo.svg"
+                alt="Notivo Logo"
+                width={30}
+                height={30}
+                draggable="false"
+                className="select-none"
+              />
+              <Link href="/" className="text-2xl font-bold text-white">
+                Notivo
+              </Link>
+            </div>
             <p className="text-sm text-white/80">
               Notivo helps you stay on top of important tasks and events with
               reminders sent through Discord, Telegram, email, and more!
@@ -37,6 +49,7 @@ export default function Footer() {
               <button
                 type="submit"
                 className="rounded-md bg-tertiary px-4 py-2 text-white transition-colors hover:bg-tertiary-light"
+                aria-label="subscribe"
               >
                 <HiOutlineMail className="h-5 w-5" />
               </button>

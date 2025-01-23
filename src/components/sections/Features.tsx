@@ -1,4 +1,4 @@
-import SectionsTemplate from "./SectionsTemplate";
+import SectionsTemplate from "@components/sections/SectionsTemplate";
 import FeaturesCard from "@components/ui/FeaturesCard";
 import { FaClock, FaRedo, FaEnvelope, FaTelegram } from "react-icons/fa";
 import { FaDiscord } from "react-icons/fa";

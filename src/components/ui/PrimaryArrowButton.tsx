@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { TiArrowRightThick } from "react-icons/ti";
 import Link from "next/link";
 
-interface OrangeButtonProps {
+interface PrimaryArrowButtonProps {
   children: React.ReactNode;
   shine?: boolean;
   className?: string;
@@ -11,7 +11,7 @@ interface OrangeButtonProps {
   href?: string;
 }
 
-const OrangeButton: FC<OrangeButtonProps> = ({
+const PrimaryArrowButton: FC<PrimaryArrowButtonProps> = ({
   children,
   shine = false,
   className = "",
@@ -43,4 +43,4 @@ const OrangeButton: FC<OrangeButtonProps> = ({
   );
 };
 
-export default React.memo(OrangeButton);
+export default React.memo(PrimaryArrowButton);

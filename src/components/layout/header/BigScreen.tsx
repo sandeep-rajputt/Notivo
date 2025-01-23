@@ -1,9 +1,12 @@
 "use client";
 import React from "react";
-import OrangeButton from "../../ui/OrangeButton";
+import PrimaryArrowButton from "@components/ui/PrimaryArrowButton";
 import Link from "next/link";
+import { RootState } from "@store/index";
+import { useSelector } from "react-redux";
 
 const BigScreen: React.FC = () => {
+  const { data } = useSelector((state: RootState) => state.userData);
   return (
     <div className="flex items-center gap-6 text-purple-text">
       <nav>
@@ -44,9 +47,13 @@ const BigScreen: React.FC = () => {
         </ul>
       </nav>
       <div>
-        <OrangeButton shine={true} className="px-6 py-3">
-          TRY IT FREE
-        </OrangeButton>
+        <PrimaryArrowButton
+          shine={true}
+          href={data ? "/dashboard" : "/signup"}
+          className="px-6 py-3"
+        >
+          {data ? "Dashboard" : "TRY IT FREE"}
+        </PrimaryArrowButton>
       </div>
     </div>
   );
