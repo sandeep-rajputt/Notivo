@@ -30,6 +30,7 @@ export default {
       },
     },
     screens: {
+      sm: "350px",
       base: "500px",
       md: "700px",
       lg: "800px",

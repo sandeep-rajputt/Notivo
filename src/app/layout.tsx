@@ -5,6 +5,7 @@ import Header from "@components/layout/header/Header";
 import Container from "@components/ui/Container";
 import Footer from "@components/layout/Footer";
 import NextTopLoader from "nextjs-toploader";
+import Tivora from "@components/Tivora/Tivora";
 
 export const metadata: Metadata = {
   title: "Notivo - Stay On Top of Your Tasks with Smart Reminders",
@@ -39,6 +40,7 @@ export default function RootLayout({
             </div>
             <Footer />
           </div>
+          <Tivora />
         </ReduxProvider>
       </body>
     </html>

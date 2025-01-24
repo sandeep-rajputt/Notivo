@@ -77,7 +77,7 @@ const Overlay: FC<OverlayProps> = ({ closeOverlay }) => {
   return createPortal(
     <motion.div
       ref={overlayRef}
-      className="fixed left-0 bottom-0 px-20 bg-background/70 backdrop-blur shadow z-[99999] overflow-y-scroll pb-5 small-scrollbar"
+      className="fixed left-0 bottom-0 px-20 bg-background/70 backdrop-blur shadow z-[999] overflow-y-scroll pb-5 small-scrollbar"
       style={{ height: "calc(100dvh - 84px)" }}
       initial="hidden"
       animate="visible"

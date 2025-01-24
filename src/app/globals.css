@@ -132,3 +132,19 @@ body {
 .loader-jump {
   animation: jump 0.5s linear infinite;
 }
+
+.notivo-scrollbar::-webkit-scrollbar {
+  background: transparent;
+  width: 5px;
+  scroll-behavior: smooth;
+}
+
+.notivo-scrollbar::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border-radius: 6px;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
