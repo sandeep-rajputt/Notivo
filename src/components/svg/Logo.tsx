@@ -1,0 +1,25 @@
+import { memo } from "react";
+
+const Logo = ({ size = 24 }: { size?: number }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 31 25"
+    width={size}
+    height={size}
+    aria-label="Notivo logo"
+    role="img"
+  >
+    <path
+      d="M0 0C13.8071 0 25 11.1929 25 25H2C0.89543 25 0 24.1046 0 23V0Z"
+      fill="#6a49f2"
+    />
+    <path
+      opacity={0.5}
+      d="M6 25C6 11.1929 17.1929 0 31 0V23C31 24.1046 30.1046 25 29 25H6Z"
+      fill="#6a49f2"
+    />
+  </svg>
+);
+
+export default memo(Logo);
