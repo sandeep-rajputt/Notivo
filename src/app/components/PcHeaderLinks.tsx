@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function PcHeaderLinks({ links }: { links: string[] }) {
   return (
     <nav
@@ -7,13 +9,14 @@ function PcHeaderLinks({ links }: { links: string[] }) {
       <ul className="flex gap-4 text-primary-word">
         {links.map((link, index) => (
           <li key={`nav-${link}-${index}`}>
-            <a
-              href={link === "Home" ? "/" : `#${link.trim().toLowerCase()}`}
+            <Link
+              href={link === "Home" ? "/" : `/${link.trim().toLowerCase()}`}
               className="p-2 hover:text-primary transition-colors"
               aria-label={`Navigate to ${link}`}
+              title={`Navigate to ${link}`}
             >
               {link}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

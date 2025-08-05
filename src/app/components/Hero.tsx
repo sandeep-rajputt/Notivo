@@ -24,7 +24,7 @@ const itemVariants = {
 const Hero: React.FC = () => {
   const loggedIn = false;
   return (
-    <section className="mt-10" aria-label="Hero section">
+    <section className="mt-20" aria-label="Hero section">
       <div className="w-full grid grid-cols-[1fr_1fr] pt-20 pb-10 xl">
         <motion.div
           variants={containerVariants}
@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="w-[80%] max-w-full z-10 select-none"
+              className="w-[90%] max-w-full z-10 select-none"
             >
               <Image
                 src="/hero.png"
