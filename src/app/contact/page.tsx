@@ -11,6 +11,8 @@ import {
   MdSend,
   MdCheckCircle,
 } from "react-icons/md";
+import PrimaryInput from "@/components/inputs/PrimaryInput";
+import PrimaryTextarea from "@/components/inputs/PrimaryTextarea";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -191,82 +193,45 @@ export default function ContactPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-semibold text-primary-dark mb-2"
-                      >
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 outline-none"
-                        placeholder="Your full name"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-semibold text-primary-dark mb-2"
-                      >
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 outline-none"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="subject"
-                      className="block text-sm font-semibold text-primary-dark mb-2"
-                    >
-                      Subject *
-                    </label>
-                    <input
+                    <PrimaryInput
+                      value={formData.name}
+                      handeleChange={handleChange}
+                      placeholder="Your name"
+                      label="Name"
+                      required={true}
+                      title="name"
                       type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 outline-none"
-                      placeholder="What's this about?"
+                    />
+
+                    <PrimaryInput
+                      value={formData.email}
+                      handeleChange={handleChange}
+                      placeholder="Your email address"
+                      label="Email"
+                      required={true}
+                      title="email"
+                      type="email"
                     />
                   </div>
 
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-semibold text-primary-dark mb-2"
-                    >
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 outline-none resize-none"
-                      placeholder="Tell us more about your inquiry..."
-                    />
-                  </div>
+                  <PrimaryInput
+                    value={formData.subject}
+                    handeleChange={handleChange}
+                    placeholder="What's this about?"
+                    label="Subject"
+                    required={true}
+                    type="text"
+                    title="subject"
+                  />
+
+                  <PrimaryTextarea
+                    value={formData.message}
+                    handeleChange={handleChange}
+                    placeholder="Tell us more about your inquiry"
+                    label="Message"
+                    required={true}
+                    title="message"
+                  />
 
                   <button
                     type="submit"

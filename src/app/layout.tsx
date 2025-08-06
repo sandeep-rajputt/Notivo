@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/app/components/Header";
 import Container from "@/app/components/Container";
 import Footer from "@/app/components/Footer";
+import NextTopLoader from "nextjs-toploader";
 import StructuredData from "@/app/components/StructuredData";
 
 export const metadata: Metadata = {
@@ -42,6 +43,11 @@ export default function RootLayout({
         <link rel="icon" href="/logo.svg" />
       </head>
       <body className={`antialiased`}>
+        <NextTopLoader
+          zIndex={99999999999}
+          color="#6a49f2"
+          showSpinner={false}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-white px-4 py-2 rounded z-[9999]"
@@ -50,10 +56,12 @@ export default function RootLayout({
         </a>
         <StructuredData />
         <Header />
-        <Container>
-          <div id="main-content">{children}</div>
-        </Container>
-        <Footer />
+        <div className="grid grid-rows-[1fr_auto] min-h-screen">
+          <Container className="h-full">
+            <div id="main-content h-full">{children}</div>
+          </Container>
+          <Footer />
+        </div>
       </body>
     </html>
   );

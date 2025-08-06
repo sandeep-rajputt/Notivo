@@ -33,7 +33,7 @@ function PrimaryButton({
       aria-label={accessibleLabel}
       aria-busy={loading}
       aria-disabled={isDisabled}
-      className={`w-full rounded-full px-5 bg-primary py-2 text-white disabled:cursor-not-allowed cursor-pointer ${className} ${
+      className={`w-full rounded-full px-5 bg-primary py-2.5 text-white disabled:cursor-not-allowed cursor-pointer ${className} ${
         loading ? "cursor-wait" : ""
       } ${!isDisabled ? "hover:bg-primary-light" : ""}`}
       type={type}
